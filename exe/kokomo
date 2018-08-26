@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'launchy'
 
 def print_to_screen
