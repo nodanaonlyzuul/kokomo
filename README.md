@@ -1,6 +1,8 @@
 # Kokomo
 
-A lightweight, extensible framework to deliver Kokomo, objectively the worst song by The Beach Boys.
+A lightweight, extensible, framework to deliver Kokomo, objectively the worst song by The Beach Boys.
+Via Youtube.
+
 
 ## Installation
 
@@ -25,6 +27,10 @@ From the command line:
 ```
 $ kokomo
 ```
+
+Then...WHAMMO!
+
+![A still from the kokomo video](./resources/kokomo.png)
 
 ## Development
 
