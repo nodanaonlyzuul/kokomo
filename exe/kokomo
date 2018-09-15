@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'launchy'
+require 'optparse'
 
 def print_to_screen
   print ''
@@ -10,6 +11,23 @@ def print_to_screen
   print ''
 end
 
-Launchy.open('https://www.youtube.com/watch?v=fJWmbLS2_ec', options = {}) do |exception|
+KOKOMOS = {
+  standard: 'https://www.youtube.com/watch?v=fJWmbLS2_ec',
+  muppets: 'https://www.youtube.com/watch?v=m-WAhdvygpE',
+  karaoke: 'https://www.youtube.com/watch?v=wxd_yDxYBh0'
+}.freeze
+
+current_kokomo = KOKOMOS[:standard]
+
+OptionParser.new do |parser|
+  parser.banner = 'Usage: kokomo [options]'
+  parser.on('-c', '--classic', 'Classic Kokomo. Default.') {}
+  parser.on('-m', '--muppets', 'kokomo by the muppets.wmv') { current_kokomo = KOKOMOS[:muppets] }
+  parser.on('-k', '--karaoke', 'Kokomo for Karaoke with friends') { current_kokomo = KOKOMOS[:karaoke] }
+  parser.on('-r', '--random', 'DANGER!!! Random Kokomo') { current_kokomo = KOKOMOS[KOKOMOS.keys.sample] }
+  parser.on('-h', '--help', 'Show this help message') { puts parser; exit 0; }
+end.parse!
+
+Launchy.open(current_kokomo, options = {}) do |exception|
   print_to_screen
 end
