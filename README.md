@@ -30,20 +30,29 @@ $ kokomo
 
 Then...WHAMMO!
 
+![A still from the kokomo video](./resources/kokomo.png)
+
 ## Advanced Usage
+
 Advanced users can take advantage of `kokomo`'s powerful command line interface.
 
 ```sh
-$ kokomo -h
 Usage: kokomo [options]
     -c, --classic                    Classic Kokomo. Default.
     -m, --muppets                    kokomo by the muppets.wmv
     -k, --karaoke                    Kokomo for Karaoke with friends
+    -l, --lyrics                     Kokomo lyrics
     -r, --random                     DANGER!!! Random Kokomo
     -h, --help                       Show this help message
 ```
 
-![A still from the kokomo video](./resources/kokomo.png)
+### Fun With `--lyrics`
+
+```sh
+$ kokomo -l | say
+$ kokomo -l | say -v Fred
+$ kokomo -l | say -v "Bad News"
+```
 
 ## Development
 
