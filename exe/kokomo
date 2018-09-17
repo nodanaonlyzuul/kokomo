@@ -24,10 +24,15 @@ OptionParser.new do |parser|
   parser.on('-c', '--classic', 'Classic Kokomo. Default.') {}
   parser.on('-m', '--muppets', 'kokomo by the muppets.wmv') { current_kokomo = KOKOMOS[:muppets] }
   parser.on('-k', '--karaoke', 'Kokomo for Karaoke with friends') { current_kokomo = KOKOMOS[:karaoke] }
-  parser.on('-r', '--random', 'DANGER!!! Random Kokomo') { current_kokomo = KOKOMOS[KOKOMOS.keys.sample] }
-  parser.on('-h', '--help', 'Show this help message') { puts parser; exit 0; }
+  parser.on('-l', '--lyrics',  'Kokomo lyrics') { current_kokomo = KOKOMOS[:lyrics] }
+  parser.on('-r', '--random',  'DANGER!!! Random Kokomo') { current_kokomo = KOKOMOS[KOKOMOS.keys.sample] }
+  parser.on('-h', '--help',    'Show this help message') { puts parser; exit 0; }
 end.parse!
 
-Launchy.open(current_kokomo, options = {}) do |exception|
+if current_kokomo == :lyrics
   print_to_screen
+else
+  Launchy.open(current_kokomo, options = {}) do |exception|
+    print_to_screen
+  end
 end
